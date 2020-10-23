@@ -21,6 +21,6 @@ Note that we will only use one of the last two, based on if we are granted permi
 ***  
 ### Team Members
 -Ryan Huber  
--Gu Xinyi  
+-Xinyi Gu  
 -Emine Karayigit    
 ### Weekly Meeting Time & Format

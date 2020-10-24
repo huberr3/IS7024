@@ -24,3 +24,4 @@ Note that we will only use one of the last two, based on if we are granted permi
 -Xinyi Gu  
 -Emine Karayigit    
 ### Weekly Meeting Time & Format
+Monday/Friday, 5PM. We will meet via Zoom call.

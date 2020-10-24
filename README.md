@@ -25,3 +25,8 @@ Note that we will only use one of the last two, based on if we are granted permi
 -Emine Karayigit    
 ### Weekly Meeting Time & Format
 Monday/Friday, 5PM. We will meet via Zoom call.
+
+-https://us04web.zoom.us/j/9416526011?pwd=TVl2Yjk1ZkxzUUdOYlZrNmtadjJGUT09
+
+meeting ID：941 652 6011
+password：686263

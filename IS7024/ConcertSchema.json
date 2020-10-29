@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/RootObject",
+    "definitions": {
+        "RootObject": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "time": {
+                    "$ref": "#/definitions/Time"
+                },
+                "disclaimer": {
+                    "type": "string"
+                },
+                "chartName": {
+                    "type": "string"
+                },
+                "bpi": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Bpi"
+                    }
+                }
+            },
+            "required": [
+                "bpi",
+                "chartName",
+                "disclaimer",
+                "time"
+            ],
+            "title": "RootObject"
+        },
+        "Bpi": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "rate": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "rate_float": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "code",
+                "description",
+                "rate",
+                "rate_float",
+                "symbol"
+            ],
+            "title": "Bpi"
+        },
+        "Time": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "updated": {
+                    "type": "string"
+                },
+                "updatedISO": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updateduk": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "updated",
+                "updatedISO",
+                "updateduk"
+            ],
+            "title": "Time"
+        }
+    }
+}

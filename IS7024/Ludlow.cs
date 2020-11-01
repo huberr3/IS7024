@@ -4,7 +4,7 @@
 //
 //    using QuickType;
 //
-//    var welcome = Welcome.FromJson(jsonString);
+//    var ludlow = Ludlow.FromJson(jsonString);
 
 namespace QuickType
 {
@@ -15,7 +15,7 @@ namespace QuickType
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class Welcome
+    public partial class Ludlow
     {
         [JsonProperty("resultsPage")]
         public ResultsPage ResultsPage { get; set; }
@@ -209,14 +209,14 @@ namespace QuickType
 
     public enum MetroAreaDisplayName { Cincinnati };
 
-    public partial class Welcome
+    public partial class Ludlow
     {
-        public static Welcome FromJson(string json) => JsonConvert.DeserializeObject<Welcome>(json, QuickType.Converter.Settings);
+        public static Ludlow FromJson(string json) => JsonConvert.DeserializeObject<Ludlow>(json, QuickType.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this Welcome self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
+        public static string ToJson(this Ludlow self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
     }
 
     internal static class Converter

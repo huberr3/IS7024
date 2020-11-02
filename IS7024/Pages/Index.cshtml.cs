@@ -32,6 +32,7 @@ namespace IS7024.Pages
                 var rootObject = RootObject.FromJson(jsonString);
                 List<Event> events = rootObject.ResultsPage.Results.Event.ToList();
                 ViewData["events"] = events;
+                
                 }
                 else
                 {
@@ -41,6 +42,7 @@ namespace IS7024.Pages
                     }
                     ViewData["events"] = new List<Event>();
                 }
+                
             }
         }
     }

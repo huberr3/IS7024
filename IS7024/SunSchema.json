@@ -1,0 +1,74 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Sun",
+    "definitions": {
+        "Sun": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "results": {
+                    "$ref": "#/definitions/Results"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "results",
+                "status"
+            ],
+            "title": "Sun"
+        },
+        "Results": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sunrise": {
+                    "type": "string"
+                },
+                "sunset": {
+                    "type": "string"
+                        
+                },
+                "solar_noon": {
+                    "type": "string"
+                },
+                "day_length": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "civil_twilight_begin": {
+                    "type": "string"
+                },
+                "civil_twilight_end": {
+                    "type": "string"
+                },
+                "nautical_twilight_begin": {
+                    "type": "string"
+                },
+                "nautical_twilight_end": {
+                    "type": "string"
+                },
+                "astronomical_twilight_begin": {
+                    "type": "string"
+                },
+                "astronomical_twilight_end": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "astronomical_twilight_begin",
+                "astronomical_twilight_end",
+                "civil_twilight_begin",
+                "civil_twilight_end",
+                "day_length",
+                "nautical_twilight_begin",
+                "nautical_twilight_end",
+                "solar_noon",
+                "sunrise",
+                "sunset"
+            ],
+            "title": "Results"
+        }
+    }
+}

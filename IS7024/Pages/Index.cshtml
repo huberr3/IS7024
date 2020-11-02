@@ -2,7 +2,8 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    var ludlows = (QuickType.Ludlow)ViewData["Ludlow"];
+    var events = (List<QuickType.Event>)ViewData["events"];
+    var sun = ViewData["sun"];
 }
 
 <div class="text-center">
@@ -10,17 +11,24 @@
     </hr>
     <table border="1" width="90%">
         <tr><th></th></tr>
-        
-          
-            <tr>
-                <td>@ludlows.ResultsPage.Page</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            
-        
+        @{
+
+            foreach (QuickType.Event eventss in events)
+            { 
+                <tr>
+                    <td>@eventss.DisplayName</td>
+                    <td>@sun</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+
+        }
+
+      
+
+
 
     </table>
 </div>

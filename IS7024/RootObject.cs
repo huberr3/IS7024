@@ -4,7 +4,7 @@
 //
 //    using QuickType;
 //
-//    var ludlow = Ludlow.FromJson(jsonString);
+//    var rootObject = RootObject.FromJson(jsonString);
 
 namespace QuickType
 {
@@ -15,7 +15,7 @@ namespace QuickType
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class Ludlow
+    public partial class RootObject
     {
         [JsonProperty("resultsPage")]
         public ResultsPage ResultsPage { get; set; }
@@ -42,7 +42,7 @@ namespace QuickType
     public partial class Results
     {
         [JsonProperty("event")]
-        public Event[] Event { get; set; }
+        public List<Event> Event { get; set; }
     }
 
     public partial class Event
@@ -69,7 +69,7 @@ namespace QuickType
         public Start Start { get; set; }
 
         [JsonProperty("performance")]
-        public Performance[] Performance { get; set; }
+        public List<Performance> Performance { get; set; }
 
         [JsonProperty("ageRestriction")]
         public object AgeRestriction { get; set; }
@@ -126,7 +126,7 @@ namespace QuickType
         public Uri Uri { get; set; }
 
         [JsonProperty("identifier")]
-        public Identifier[] Identifier { get; set; }
+        public List<Identifier> Identifier { get; set; }
     }
 
     public partial class Identifier
@@ -209,14 +209,14 @@ namespace QuickType
 
     public enum MetroAreaDisplayName { Cincinnati };
 
-    public partial class Ludlow
+    public partial class RootObject
     {
-        public static Ludlow FromJson(string json) => JsonConvert.DeserializeObject<Ludlow>(json, QuickType.Converter.Settings);
+        public static RootObject FromJson(string json) => JsonConvert.DeserializeObject<RootObject>(json, QuickType.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this Ludlow self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
+        public static string ToJson(this RootObject self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
     }
 
     internal static class Converter

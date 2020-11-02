@@ -2,9 +2,35 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var events = (List<QuickType.Event>)ViewData["events"];
+    var sun = ViewData["sun"];
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </hr>
+    <table border="1" width="90%">
+        <tr><th></th></tr>
+        @{
+
+            foreach (QuickType.Event eventss in events)
+            { 
+                <tr>
+                    <td>@eventss.DisplayName</td>
+                    <td>@sun</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+
+        }
+
+      
+
+
+
+    </table>
 </div>
+
+

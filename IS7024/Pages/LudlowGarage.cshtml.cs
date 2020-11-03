@@ -20,7 +20,12 @@ namespace IS7024.Pages
                 string sunJSON = webClient.DownloadString("https://api.sunrise-sunset.org/json?lat=39.7970&lng=83.8255&date=2020-11-02");
                 var sun = QuickTypeSun.Sun.FromJson(sunJSON);
                 var results = sun.Results.Sunset;
-                ViewData["sun"] = results;
+                string s = results;
+                string[] vars = s.Split(':');
+                var newtime = Convert.ToInt16(vars[0]);
+                int realtime = newtime + 6 - 12;
+                string itstime = "~" + realtime + ":" + vars[1] + " PM";
+                ViewData["sun"] = itstime;
 
 
                 string jsonString = webClient.DownloadString("https://api.songkick.com/api/3.0/venues/62388/calendar.json?apikey=Y77nbW56nkfpIpw9");

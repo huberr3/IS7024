@@ -1,0 +1,35 @@
+﻿@page
+@model IS7024.Pages.HollywoodBowlModel
+@{
+    ViewData["Title"] = "HollywoodBowl";
+    var events = (List<QuickTypeBowl.Event>)ViewData["events"];
+    var sun = ViewData["sun"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Upcoming Events at the Hollywood Bowl</h1>
+    </hr>
+    <table border="1" width="90%">
+        <tr><th></th></tr>
+        @{
+
+            foreach (QuickTypeBowl.Event eventss in events)
+            {
+                <tr>
+                    <td>@eventss.DisplayName</td>
+                    <td>@sun</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+
+        }
+
+
+
+
+
+    </table>
+</div>
+

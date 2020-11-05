@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
 using QuickTypeBowl;
 
@@ -33,12 +34,12 @@ namespace IS7024.Pages
                 JObject jsonObject = JObject.Parse(jsonString);
                 IList<string> validationEvents = new List<string>();
                 //if (jsonObject.IsValid(schema, out validationEvents))
-                {
+                //{
                     var hBowl = HBowl.FromJson(jsonString);
                     List<Event> events = hBowl.ResultsPage.Results.Event.ToList();
                     ViewData["events"] = events;
 
-                }
+                //}
                 //else
                 {
                   //  foreach (string evt in validationEvents)

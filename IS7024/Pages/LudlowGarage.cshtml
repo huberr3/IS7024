@@ -1,0 +1,39 @@
+﻿@page
+@model IS7024.Pages.LudlowGarageModel
+@{
+    ViewData["Title"] = "LudlowGarage";
+    var events = (List<QuickType.Event>)ViewData["events"];
+    var sun = ViewData["sun"];
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Upcoming Events at the Ludlow Garage</h1>
+        </hr>
+        <table border="1" width="90%">
+            <tr><th></th></tr>
+            @{
+
+                foreach (QuickType.Event eventss in events)
+                {
+                        <tr>
+                            <td>@eventss.DisplayName</td>
+                            <td>@eventss.Type</td>
+                            <td>@eventss.Status</td>
+                            <td>@sun</td>
+                            <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
+
+                            <td></td>
+                            <td></td>
+                        </tr>
+                }
+
+            }
+
+
+
+
+
+        </table>
+        <img src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">
+    </div>
+

@@ -1,21 +1,20 @@
 # Introduction
 ***  
-Our application will pair a list of upcoming live events at a venue with the forecasted UV rating and safe exposure time to
-inform the user if the length of safe UV exposure time will cover the time they will be outside at the event.
+Our application will pair a list of upcoming live events at a venue with the sunset time to
+inform the user if they need to wear glasses when they are outside at the event.
 
 # Requirements  
 ***
-As a user, I will want to choose a venue for a live event so that I can view the UV forecast for the venue's upcoming events
-and know how long I can safely spend in the sun without damaging my skin.
+As a user, I will want to choose a venue for a live event so that I can view the sunset time for the venue's upcoming events
+and know whether I need to bring my sunglasses.
 
 # Data Sources
 ***  
 Our data sources include:  
--https://www.openuv.io/forecast  
+-https://api.sunrise-sunset.org
 -https://www.songkick.com/developer  
--https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#search-events-v2  
+ 
   
-Note that we will only use one of the last two, based on if we are granted permission to access one or the other.
 
 # Team Composition
 ***  

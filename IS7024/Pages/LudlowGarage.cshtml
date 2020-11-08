@@ -7,15 +7,15 @@
 }
 
     <div class="text-center">
-        <h1 class="display-4">Upcoming Events at the Ludlow Garage</h1>
+        <h1 class="display-4">Upcoming Concerts at the Ludlow Garage</h1>
+        <p>Cincinnati, Ohio</p>
         <hr>
         <table border="1" width="90%">
             <tr>
                 <th>Date</th>
-                <th>City</th>
                 <th>Artist</th>
-                <th>Type</th>
                 <th>Status</th>
+                <th>Start Time</th>
                 <th>Sunset Time</th>
                 <th>Buy tickets</th>
             </tr>
@@ -23,18 +23,30 @@
 
                 foreach (QuickType.Event eventss in events)
                 {
-                        <tr>
-                            <td>@eventss.Start.Datetime</td>
-                            <td>@eventss.Location.City</td>
-                            <td>@eventss.Performance[0].Artist.DisplayName</td>
-                            <td>@eventss.Type</td>
-                            <td>@eventss.Status</td>
-                            <td>@sun</td>
-                            <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
 
-                            <td></td>
-                            <td></td>
-                        </tr>
+                    string date = eventss.Start.Date.ToString();
+                    string[] dars = date.Split('/');
+                    string day = dars[0];
+                    string month = dars[1];
+                    string year = dars[2];
+                    string[] year1 = year.Split(' ');
+                    string yearclean = year1[0];
+
+                  
+                    
+
+
+                    <tr>
+                        <td>@day/@month/@yearclean</td>
+                        <td>@eventss.Performance[0].Artist.DisplayName</td>
+                        <td>@eventss.Status</td>
+                        <td>@eventss.Start.Datetime</td>
+                        <td>@sun</td>
+                        <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
+
+                        <td></td>
+                        <td></td>
+                    </tr>
                 }
 
             }

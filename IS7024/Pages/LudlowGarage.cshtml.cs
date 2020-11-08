@@ -38,6 +38,7 @@ namespace IS7024.Pages
                     List<Event> events = rootObject.ResultsPage.Results.Event.ToList();
                     ViewData["events"] = events;
 
+                    
                 }
                 else
                 {

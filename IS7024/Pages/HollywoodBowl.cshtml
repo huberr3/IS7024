@@ -8,7 +8,7 @@
 
 <div class="text-center">
     <h1 class="display-4">Upcoming Events at the Hollywood Bowl</h1>
-    </hr>
+    <hr>
     <table border="1" width="90%">
         <tr>
             <th>Date</th>
@@ -30,7 +30,17 @@
                 string[] year1 = year.Split(' ');
                 string yearclean = year1[0];
 
+                if (eventss.Start.Datetime != null)
 
+                {
+                    string[] tars = eventss.Start.Datetime.Split('T');
+                    string[] tars2 = tars[1].Split(':');
+                    string mhour = tars2[0];
+                    string mmin = tars2[1];
+
+                    var newhour = Convert.ToInt32(mhour);
+                    int realhour = newhour - 12;
+                    string starttime = realhour + ":" + mmin + " PM";
 
 
 
@@ -43,9 +53,11 @@
                     <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
 
                 </tr>
-            }
+                    }
+                }
 
-        }
+            }
+       
 
 
 

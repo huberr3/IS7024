@@ -32,24 +32,37 @@
                     string[] year1 = year.Split(' ');
                     string yearclean = year1[0];
 
-                  
+
+                    if (eventss.Start.Datetime != null)
                     
+                        {
+                            string[] tars = eventss.Start.Datetime.Split('T');
+                            string[] tars2 = tars[1].Split(':');
+                            string mhour = tars2[0];
+                            string mmin = tars2[1];
+
+                            var newhour = Convert.ToInt32(mhour);
+                            int realhour = newhour - 12;
+                            string starttime = realhour + ":" + mmin + " PM";
+
 
 
                     <tr>
                         <td>@day/@month/@yearclean</td>
                         <td>@eventss.Performance[0].Artist.DisplayName</td>
                         <td>@eventss.Status</td>
-                        <td>@eventss.Start.Datetime</td>
+                        <td>@starttime</td>
                         <td>@sun</td>
                         <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
 
                         <td></td>
                         <td></td>
                     </tr>
-                }
+                            }
+                        }
+                    
 
-            }
+                }
 
 
 

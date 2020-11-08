@@ -10,17 +10,36 @@
     <h1 class="display-4">Upcoming Events at the Hollywood Bowl</h1>
     </hr>
     <table border="1" width="90%">
-        <tr><th></th></tr>
+        <tr>
+            <th>Date</th>
+            <th>Artist</th>
+            <th>Status</th>
+            <th>Start Time</th>
+            <th>Sunset Time</th>
+            <th>Buy tickets</th>
+        </tr>
         @{
 
             foreach (QuickTypeBowl.Event eventss in events)
             {
+                string date = eventss.Start.Date.ToString();
+                string[] dars = date.Split('/');
+                string day = dars[0];
+                string month = dars[1];
+                string year = dars[2];
+                string[] year1 = year.Split(' ');
+                string yearclean = year1[0];
+
+
+
+
+
                 <tr>
-                    <td>@eventss.DisplayName</td>
-                    <td>@eventss.Type</td>
+                    <td>@day/@month/@yearclean</td>
+                    <td>@eventss.Performance[0].Artist.DisplayName</td>
                     <td>@eventss.Status</td>
+                    <td>@eventss.Start.Datetime</td>
                     <td>@sun</td>
-                    <td>@eventss.Venue</td>
                     <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
 
                 </tr>

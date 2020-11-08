@@ -8,15 +8,25 @@
 
     <div class="text-center">
         <h1 class="display-4">Upcoming Events at the Ludlow Garage</h1>
-        </hr>
+        <hr>
         <table border="1" width="90%">
-            <tr><th></th></tr>
+            <tr>
+                <th>Date</th>
+                <th>City</th>
+                <th>Artist</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Sunset Time</th>
+                <th>Buy tickets</th>
+            </tr>
             @{
 
                 foreach (QuickType.Event eventss in events)
                 {
                         <tr>
-                            <td>@eventss.DisplayName</td>
+                            <td>@eventss.Start.Datetime</td>
+                            <td>@eventss.Location.City</td>
+                            <td>@eventss.Performance[0].Artist.DisplayName</td>
                             <td>@eventss.Type</td>
                             <td>@eventss.Status</td>
                             <td>@sun</td>

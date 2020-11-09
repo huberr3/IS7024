@@ -26,7 +26,7 @@ namespace IS7024.Pages
                 int realtime = newtime + 6 - 12;
                 string itstime = "~" + realtime + ":" + vars[1] + " PM";
                 ViewData["sun"] = itstime;
-
+                
 
                 string jsonString = webClient.DownloadString("https://api.songkick.com/api/3.0/venues/62388/calendar.json?apikey=Y77nbW56nkfpIpw9");
                 JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("SongkickSchema.json"));

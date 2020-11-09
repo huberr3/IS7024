@@ -14,6 +14,8 @@ namespace IS7024.Pages
 {
     public class HollywoodBowlModel : PageModel
     {
+        public string monthfinal { get; set; }
+
         public void OnGet()
         {
             using (var webClient = new WebClient())
@@ -39,6 +41,12 @@ namespace IS7024.Pages
                     List<Event> events = hBowl.ResultsPage.Results.Event.ToList();
                     ViewData["events"] = events;
 
+                
+                }
+
+
+                
+
                 //}
                 //else
                 {
@@ -52,4 +60,3 @@ namespace IS7024.Pages
             }
         }
     }
-}

@@ -207,7 +207,7 @@ namespace QuickTypeBowl
 
     public enum CountryDisplayName { Ca, Us };
 
-    public enum MetroAreaDisplayName { LosAngelesLa };
+    public enum MetroAreaDisplayName { LosAngeles};
 
     public partial class HBowl
     {
@@ -467,7 +467,7 @@ namespace QuickTypeBowl
             var value = serializer.Deserialize<string>(reader);
             if (value == "Los Angeles (LA)")
             {
-                return MetroAreaDisplayName.LosAngelesLa;
+                return MetroAreaDisplayName.LosAngeles;
             }
             throw new Exception("Cannot unmarshal type MetroAreaDisplayName");
         }
@@ -480,7 +480,7 @@ namespace QuickTypeBowl
                 return;
             }
             var value = (MetroAreaDisplayName)untypedValue;
-            if (value == MetroAreaDisplayName.LosAngelesLa)
+            if (value == MetroAreaDisplayName.LosAngeles)
             {
                 serializer.Serialize(writer, "Los Angeles (LA)");
                 return;

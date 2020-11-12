@@ -43,6 +43,7 @@ namespace QuickType
     {
         [JsonProperty("event")]
         public List<Event> Event { get; set; }
+
     }
 
     public partial class Event

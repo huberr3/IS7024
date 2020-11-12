@@ -1,0 +1,355 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/SongkickSchemaAll",
+  "definitions": {
+    "SongkickSchemaAll": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resultsPage": {
+          "$ref": "#/definitions/ResultsPage"
+        }
+      },
+      "required": [
+        "resultsPage"
+      ],
+      "title": "SongkickSchemaAll"
+    },
+    "ResultsPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "results": {
+          "$ref": "#/definitions/Results"
+        },
+        "perPage": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "totalEntries": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "page",
+        "perPage",
+        "results",
+        "status",
+        "totalEntries"
+      ],
+      "title": "ResultsPage"
+    },
+    "Results": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Event"
+          }
+        }
+      },
+      "required": [
+        "event"
+      ],
+      "title": "Results"
+    },
+    "Event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "status": {
+          "type": "string"
+        },
+        "popularity": {
+          "type": "number"
+        },
+        "start": {
+          "$ref": "#/definitions/Start"
+        },
+        "performance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Performance"
+          }
+        },
+        "ageRestriction": {
+          "type": "null"
+        },
+        "flaggedAsEnded": {
+          "type": "boolean"
+        },
+        "venue": {
+          "$ref": "#/definitions/Venue"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        }
+      },
+      "required": [
+        "ageRestriction",
+        "displayName",
+        "flaggedAsEnded",
+        "id",
+        "location",
+        "performance",
+        "popularity",
+        "start",
+        "status",
+        "type",
+        "uri",
+        "venue"
+      ],
+      "title": "Event"
+    },
+    "Location": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lng": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "city",
+        "lat",
+        "lng"
+      ],
+      "title": "Location"
+    },
+    "Performance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "billing": {
+          "type": "string"
+        },
+        "billingIndex": {
+          "type": "integer"
+        },
+        "artist": {
+          "$ref": "#/definitions/Artist"
+        }
+      },
+      "required": [
+        "artist",
+        "billing",
+        "billingIndex",
+        "displayName",
+        "id"
+      ],
+      "title": "Performance"
+    },
+    "Artist": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          }
+        }
+      },
+      "required": [
+        "displayName",
+        "id",
+        "identifier",
+        "uri"
+      ],
+      "title": "Artist"
+    },
+    "Identifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mbid": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".json"
+          ]
+        }
+      },
+      "required": [
+        "href",
+        "mbid"
+      ],
+      "title": "Identifier"
+    },
+    "Start": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "datetime": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "time": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "time"
+            }
+          ]
+        }
+      },
+      "required": [
+        "date",
+        "datetime",
+        "time"
+      ],
+      "title": "Start"
+    },
+    "Venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "metroArea": {
+          "$ref": "#/definitions/MetroArea"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lng": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "displayName",
+        "id",
+        "lat",
+        "lng",
+        "metroArea",
+        "uri"
+      ],
+      "title": "Venue"
+    },
+    "MetroArea": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "country": {
+          "$ref": "#/definitions/Country"
+        },
+        "state": {
+          "$ref": "#/definitions/Country"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        }
+      },
+      "required": [
+        "country",
+        "displayName",
+        "id",
+        "state",
+        "uri"
+      ],
+      "title": "MetroArea"
+    },
+    "Country": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "displayName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "displayName"
+      ],
+      "title": "Country"
+    }
+  }
+}

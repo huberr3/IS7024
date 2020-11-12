@@ -4,10 +4,15 @@
     ViewData["Title"] = "HollywoodBowl";
     var events = (List<QuickTypeBowl.Event>)ViewData["events"];
     var sun = ViewData["sun"];
+    string eventlocation = (string)ViewData["eventlocation"];
+
 }
 
 <div class="text-center">
     <h1 class="display-4">Upcoming Events at the Hollywood Bowl</h1>
+    @{
+        <h4>@eventlocation</h4>
+    }
     <hr>
     <table border="1" width="90%">
         <tr>
@@ -19,7 +24,6 @@
             <th>Buy tickets</th>
         </tr>
         @{
-
             foreach (QuickTypeBowl.Event eventss in events)
             {
                 string date = eventss.Start.Date.ToString();
@@ -41,29 +45,18 @@
                     var newhour = Convert.ToInt32(mhour);
                     int realhour = newhour - 12;
                     string starttime = realhour + ":" + mmin + " PM";
-
-
-
-                <tr>
+                    <tr>
                         <td>@day/@month/@yearclean</td>
                         <td>@eventss.Performance[0].Artist.DisplayName</td>
                         <td>@eventss.Status</td>
                         <td>@starttime</td>
                         <td>@sun</td>
                         <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
-
-                </tr>
-                    }
+                    </tr>
                 }
-
             }
-       
-
-
-
-
-
+        }
     </table>
-    <img src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">
+    <img alt ="Songkick Logo" src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">
 </div>
 

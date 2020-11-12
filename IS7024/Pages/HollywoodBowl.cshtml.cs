@@ -30,33 +30,28 @@ namespace IS7024.Pages
                 string itstime = "~" + realtime + ":" + vars[1] + " PM";
                 ViewData["sun"] = itstime;
 
-
                 string jsonString = webClient.DownloadString("https://api.songkick.com/api/3.0/venues/7211/calendar.json?apikey=Y77nbW56nkfpIpw9");
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("SongkickSchema.json"));
+                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("SongkickSchemaAll.json"));
                 JObject jsonObject = JObject.Parse(jsonString);
                 IList<string> validationEvents = new List<string>();
-                //if (jsonObject.IsValid(schema, out validationEvents))
-                //{
+                if (jsonObject.IsValid(schema, out validationEvents))
+                {
                     var hBowl = HBowl.FromJson(jsonString);
                     List<Event> events = hBowl.ResultsPage.Results.Event.ToList();
                     ViewData["events"] = events;
-
-                
+                    string eventstate = events[0].Venue.MetroArea.State.DisplayName.ToString();
+                    string eventcity = events[0].Venue.MetroArea.DisplayName.ToString();
+                    ViewData["eventlocation"] = eventcity + ", " + eventstate;
                 }
-
-
-                
-
-                //}
-                //else
+                else
                 {
-                  //  foreach (string evt in validationEvents)
+                    foreach (string evt in validationEvents)
                     {
-                    //    Console.WriteLine(evt);
+                        Console.WriteLine(evt);
                     }
-                    //ViewData["events"] = new List<Event>();
+                    ViewData["events"] = new List<Event>();
                 }
-
             }
         }
     }
+}

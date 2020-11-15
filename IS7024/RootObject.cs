@@ -68,6 +68,9 @@ namespace QuickType
         [JsonProperty("start")]
         public Start Start { get; set; }
 
+        [JsonProperty("sunset")]
+        public String Sunset { get; set; }
+
         [JsonProperty("performance")]
         public List<Performance> Performance { get; set; }
 

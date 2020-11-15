@@ -23,8 +23,8 @@ namespace IS7024.Pages
                 string sunJSON = webClient.DownloadString("https://api.sunrise-sunset.org/json?lat=34.1122&lng=118.3391&date=2020-11-02");
                 var sun = QuickTypeSun.Sun.FromJson(sunJSON);
                 var results = sun.Results.Sunset;
-                string s = results;
-                string[] vars = s.Split(':');
+                string resultsString = results;
+                string[] vars = resultsString.Split(':');
                 var newtime = Convert.ToInt16(vars[0]);
                 int realtime = newtime + 9 - 12;
                 string itstime = "~" + realtime + ":" + vars[1] + " PM";

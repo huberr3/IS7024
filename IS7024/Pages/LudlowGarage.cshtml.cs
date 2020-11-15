@@ -20,8 +20,8 @@ namespace IS7024.Pages
                 string sunJSON = webClient.DownloadString("https://api.sunrise-sunset.org/json?lat=39.7970&lng=83.8255&date=2020-11-02");
                 var sun = QuickTypeSun.Sun.FromJson(sunJSON);
                 var results = sun.Results.Sunset;
-                string s = results;
-                string[] vars = s.Split(':');
+                string resultsString = results;
+                string[] vars = resultsString.Split(':');
                 var newtime = Convert.ToInt16(vars[0]);
                 int realtime = newtime + 6 - 12;
                 string itstime = "~" + realtime + ":" + vars[1] + " PM";
@@ -35,8 +35,8 @@ namespace IS7024.Pages
                 if (jsonObject.IsValid(schema, out validationEvents))
                 {
                     var rootObject = RootObject.FromJson(jsonString);
-                    List<Event> events = rootObject.ResultsPage.Results.Event.ToList();
-                    ViewData["events"] = events;
+                    List<Event> eventsList = rootObject.ResultsPage.Results.Event.ToList();
+                    ViewData["events"] = eventsList;
 
                 }
                 else

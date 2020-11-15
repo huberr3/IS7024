@@ -37,7 +37,7 @@ namespace IS7024.Pages
                 IList<string> validationEvents = new List<string>();
                 //if (jsonObject.IsValid(schema, out validationEvents))
                 //{
-                    var hBowl = HBowl.FromJson(jsonString);
+                    HBowl hBowl = HBowl.FromJson(jsonString);
                     List<Event> events = hBowl.ResultsPage.Results.Event.ToList();
                     ViewData["events"] = events;
 

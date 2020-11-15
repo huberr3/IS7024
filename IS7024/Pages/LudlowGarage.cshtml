@@ -6,70 +6,72 @@
     var sun = ViewData["sun"];
 }
 
-<div class="text-center">
-    <h1 class="display-4">Upcoming Concerts at the Ludlow Garage</h1>
-    <p>Cincinnati, Ohio</p>
-    <hr />
-    <table border="1" width="90%">
-        <tr>
-            <th>Date</th>
-            <th>Artist</th>
-            <th>Status</th>
-            <th>Start Time</th>
-            <th>Sunset Time</th>
-            <th>Buy tickets</th>
-        </tr>
-        @{
+    <div class="text-center">
+        <h1 class="display-4">Upcoming Concerts at the Ludlow Garage</h1>
+        <p>Cincinnati, Ohio</p>
+        <hr>
+        <table border="1" width="90%">
+            <tr>
+                <th>Date</th>
+                <th>Artist</th>
+                <th>Status</th>
+                <th>Start Time</th>
+                <th>Sunset Time</th>
+                <th>Buy tickets</th>
+            </tr>
+            @{
 
-            foreach (QuickType.Event eventss in events)
+    foreach (QuickType.Event eventss in events)
+    {
+
+        string date = eventss.Start.Date.ToString();
+        string[] dars = date.Split('/');
+        string day = dars[0];
+        string month = dars[1];
+        string year = dars[2];
+        string[] year1 = year.Split(' ');
+        string yearclean = year1[0];
+
+
+        if (eventss.Start.Datetime != null)
+
+        {
+            string[] tars = eventss.Start.Datetime.Split('T');
+            string[] tars2 = tars[1].Split(':');
+            string mhour = tars2[0];
+            string mmin = tars2[1];
+
+            var newhour = Convert.ToInt32(mhour);
+            int realhour = newhour - 12;
+            string starttime = realhour + ":" + mmin + " PM";
+
+
+                     
             {
+               
 
-                string date = eventss.Start.Date.ToString();
-                string[] dars = date.Split('/');
-                string day = dars[0];
-                string month = dars[1];
-                string year = dars[2];
-                string[] year1 = year.Split(' ');
-                string yearclean = year1[0];
+                    <tr>
+                        <td>@day/@month/@yearclean</td>
+                        <td>@eventss.Performance[0].Artist.DisplayName</td>
+                        <td>@eventss.Status</td>
+                        <td>@starttime</td>
+                        <td>@sun</td>
+                        <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
 
-
-                if (eventss.Start.Datetime != null)
-
-                {
-                    string[] tars = eventss.Start.Datetime.Split('T');
-                    string[] tars2 = tars[1].Split(':');
-                    string mhour = tars2[0];
-                    string mmin = tars2[1];
-
-                    var newhour = Convert.ToInt32(mhour);
-                    int realhour = newhour - 12;
-                    string starttime = realhour + ":" + mmin + " PM";
-
-
-
-                    {
-
-
-                        <tr>
-                            <td>@day/@month/@yearclean</td>
-                            <td>@eventss.Performance[0].Artist.DisplayName</td>
-                            <td>@eventss.Status</td>
-                            <td>@starttime</td>
-                            <td>@sun</td>
-                            <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
-
-                            <td></td>
-                        </tr>
-                    }
-                }
-
-
+                       <td></td>
+                    </tr>
             }
-
-
         }
-    </table>
 
-    <img src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">
 
-</div>
+    }
+
+
+
+
+
+    
+        <img src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">
+    
+    }
+

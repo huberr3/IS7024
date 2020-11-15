@@ -28,8 +28,8 @@ namespace IS7024.Pages
                 JObject jsonObject = JObject.Parse(jsonString);
                 IList<string> validationEvents = new List<string>();
                 if (jsonObject.IsValid(schema, out validationEvents))
-                {
-                    RootObject rootObject = RootObject.FromJson(jsonString);
+                { 
+                var rootObject = RootObject.FromJson(jsonString);
                 List<Event> events = rootObject.ResultsPage.Results.Event.ToList();
                 ViewData["events"] = events;
                 

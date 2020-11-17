@@ -8,6 +8,7 @@
 
 <div class="text-center">
     <h1 class="display-4">Upcoming Events at the Hollywood Bowl</h1>
+    <p>Los Angeles, California</p>
     <hr>
     <table border="1" width="90%">
         <tr>
@@ -16,7 +17,8 @@
             <th>Status</th>
             <th>Start Time</th>
             <th>Sunset Time</th>
-            <th>Buy tickets</th>
+            <th>Buy Tickets</th>
+            <th>Will I Need Sunglasses?</th>
         </tr>
         @{
 
@@ -42,26 +44,53 @@
                     int realhour = newhour - 12;
                     string starttime = realhour + ":" + mmin + " PM";
 
+                    string sunset1 = eventss.Sunset;
+                    string[] sunsetbreakdown1 = sunset1.Split('~');
+                    string sunsetholder1 = sunsetbreakdown1[1];
+                    string[] sunsetbreakdown2 = sunsetholder1.Split(":");
+                    string sunsethour = sunsetbreakdown2[0];
+                    string[] sunsetholder2 = sunsetbreakdown2[1].Split(" ");
+                    string sunsetminute = sunsetholder2[0];
 
+                    var sunsettimedate = new DateTime(1900, 01, 01, Convert.ToInt32(sunsethour), Convert.ToInt32(sunsetminute), 0);
+                    var starttimedate = new DateTime(1900, 01, 01, realhour, Convert.ToInt32(mmin), 0);
 
-                <tr>
+                    int compare = DateTime.Compare(sunsettimedate, starttimedate);
+
+                    if (compare > 0)
+                    {
+                        var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunoff.gif";
+
+                        <tr>
+                            <td>@day/@month/@yearclean</td>
+                            <td>@eventss.Performance[0].Artist.DisplayName</td>
+                            <td>@eventss.Status</td>
+                            <td>@starttime</td>
+                            <td>@eventss.Sunset</td>
+                            <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
+                            <td><img src="@glassesurl" width="53" height="40" alt="NOPE!" title="NOPE!"/></td>
+
+                        </tr>
+                    }
+                    else
+                    {
+                        var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunon.gif";
+
+                    <tr>
                         <td>@day/@month/@yearclean</td>
                         <td>@eventss.Performance[0].Artist.DisplayName</td>
                         <td>@eventss.Status</td>
                         <td>@starttime</td>
                         <td>@eventss.Sunset</td>
                         <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
+                        <td><img src="@glassesurl" width="74" height="40" alt="YES!" title="YES!"/></td>
 
-                </tr>
+                    </tr>
+                        }
                     }
                 }
 
             }
-       
-
-
-
-
 
     </table>
     <img src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">

@@ -5,103 +5,104 @@
     var events = (List<QuickType.Event>)ViewData["events"];
     var sun = ViewData["sun"];
 }
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
-    <div class="text-center">
-        <h1 class="display-4">Upcoming Concerts at the Ludlow Garage</h1>
-        <p>Cincinnati, Ohio</p>
-        <hr>
-        <table border="1" width="90%">
-            <tr>
-                <th>Date</th>
-                <th>Artist</th>
-                <th>Status</th>
-                <th>Start Time</th>
-                <th>Sunset Time</th>
-                <th>Buy Tickets</th>
-                <th>Will I Need Sunglasses?</th>
-            </tr>
-            @{
+<div class="text-center">
+    <h1 class="display-4">Upcoming Concerts at the Ludlow Garage</h1>
+    <p>Cincinnati, Ohio</p>
+    <hr>
+    <table border="1" width="90%">
+        <tr>
+            <th>Date</th>
+            <th>Artist</th>
+            <th>Status</th>
+            <th>Start Time</th>
+            <th>Sunset Time</th>
+            <th>Buy Tickets</th>
+            <th>Will I Need Sunglasses?</th>
+        </tr>
+        @{
 
-                foreach (QuickType.Event eventss in events)
+            foreach (QuickType.Event eventss in events)
+            {
+
+                string date = eventss.Start.Date.ToString();
+                string[] dars = date.Split('/');
+                string day = dars[0];
+                string month = dars[1];
+                string year = dars[2];
+                string[] year1 = year.Split(' ');
+                string yearclean = year1[0];
+
+
+                if (eventss.Start.Datetime != null)
+
                 {
+                    string[] tars = eventss.Start.Datetime.Split('T');
+                    string[] tars2 = tars[1].Split(':');
+                    string mhour = tars2[0];
+                    string mmin = tars2[1];
 
-                    string date = eventss.Start.Date.ToString();
-                    string[] dars = date.Split('/');
-                    string day = dars[0];
-                    string month = dars[1];
-                    string year = dars[2];
-                    string[] year1 = year.Split(' ');
-                    string yearclean = year1[0];
+                    var newhour = Convert.ToInt32(mhour);
+                    int realhour = newhour - 12;
+                    string starttime = realhour + ":" + mmin + " PM";
 
+                    string sunset1 = eventss.Sunset;
+                    string[] sunsetbreakdown1 = sunset1.Split('~');
+                    string sunsetholder1 = sunsetbreakdown1[1];
+                    string[] sunsetbreakdown2 = sunsetholder1.Split(":");
+                    string sunsethour = sunsetbreakdown2[0];
+                    string[] sunsetholder2 = sunsetbreakdown2[1].Split(" ");
+                    string sunsetminute = sunsetholder2[0];
 
-                    if (eventss.Start.Datetime != null)
+                    var sunsettimedate = new DateTime(1900, 01, 01, Convert.ToInt32(sunsethour), Convert.ToInt32(sunsetminute), 0);
+                    var starttimedate = new DateTime(1900, 01, 01, realhour, Convert.ToInt32(mmin), 0);
 
+                    int compare = DateTime.Compare(sunsettimedate, starttimedate);
+
+                    if (compare > 0)
                     {
-                        string[] tars = eventss.Start.Datetime.Split('T');
-                        string[] tars2 = tars[1].Split(':');
-                        string mhour = tars2[0];
-                        string mmin = tars2[1];
 
-                        var newhour = Convert.ToInt32(mhour);
-                        int realhour = newhour - 12;
-                        string starttime = realhour + ":" + mmin + " PM";
+                        var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunon.gif";
 
-                        string sunset1 = eventss.Sunset;
-                        string[] sunsetbreakdown1 = sunset1.Split('~');
-                        string sunsetholder1 = sunsetbreakdown1[1];
-                        string[] sunsetbreakdown2 = sunsetholder1.Split(":");
-                        string sunsethour = sunsetbreakdown2[0];
-                        string[] sunsetholder2 = sunsetbreakdown2[1].Split(" ");
-                        string sunsetminute = sunsetholder2[0];
+                        <tr>
+                            <td>@day/@month/@yearclean</td>
+                            <td>@eventss.Performance[0].Artist.DisplayName</td>
+                            <td>@eventss.Status</td>
+                            <td>@starttime</td>
+                            <td>@eventss.Sunset</td>
+                            <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
+                            <td><img src="@glassesurl" width="74" height="40" alt="YES!" title="YES!" /></td>
 
-                        var sunsettimedate = new DateTime(1900, 01, 01, Convert.ToInt32(sunsethour), Convert.ToInt32(sunsetminute), 0);
-                        var starttimedate = new DateTime(1900, 01, 01, realhour, Convert.ToInt32(mmin), 0);
+                        </tr>
+                    }
+                    else
+                    {
+                        var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunoff.gif";
 
-                        int compare = DateTime.Compare(sunsettimedate, starttimedate);
+                        <tr>
+                            <td>@day/@month/@yearclean</td>
+                            <td>@eventss.Performance[0].Artist.DisplayName</td>
+                            <td>@eventss.Status</td>
+                            <td>@starttime</td>
+                            <td>@eventss.Sunset</td>
+                            <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
+                            <td><img src="@glassesurl" width="53" height="40" alt="NOPE!" title="NOPE!" /></td>
 
-                        if (compare > 0)
-                        {
-                            
-                            var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunon.gif";
-
-                            <tr>
-                                <td>@day/@month/@yearclean</td>
-                                <td>@eventss.Performance[0].Artist.DisplayName</td>
-                                <td>@eventss.Status</td>
-                                <td>@starttime</td>
-                                <td>@eventss.Sunset</td>
-                                <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
-                                <td><img src="@glassesurl" width="74" height="40" alt="YES!" title="YES!" /></td>
-
-                            </tr>
-                        }
-                        else
-                        {
-                            var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunoff.gif";
-
-                            <tr>
-                                <td>@day/@month/@yearclean</td>
-                                <td>@eventss.Performance[0].Artist.DisplayName</td>
-                                <td>@eventss.Status</td>
-                                <td>@starttime</td>
-                                <td>@eventss.Sunset</td>
-                                <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
-                                <td><img src="@glassesurl" width="53" height="40" alt="NOPE!" title="NOPE!" /></td>
-
-                            </tr>
-                        }
+                        </tr>
                     }
                 }
-
-
             }
 
 
-            </table>
+        }
+
+
+    </table>
 
 
 
-            <img src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">
+    <img src="https://raw.githubusercontent.com/huberr3/IS7024/master/powered-by-songkick-pink.png" width="171" height="60">
 
-            
+</div>    
 

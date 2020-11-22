@@ -61,21 +61,7 @@
 
                         if (compare > 0)
                         {
-                            var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunoff.gif";
-
-                            <tr>
-                                <td>@day/@month/@yearclean</td>
-                                <td>@eventss.Performance[0].Artist.DisplayName</td>
-                                <td>@eventss.Status</td>
-                                <td>@starttime</td>
-                                <td>@eventss.Sunset</td>
-                                <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
-                                <td><img src="@glassesurl" width="53" height="40" alt="NOPE!" title="NOPE!" /></td>
-
-                            </tr>
-                        }
-                        else
-                        {
+                            
                             var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunon.gif";
 
                             <tr>
@@ -86,6 +72,21 @@
                                 <td>@eventss.Sunset</td>
                                 <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
                                 <td><img src="@glassesurl" width="74" height="40" alt="YES!" title="YES!" /></td>
+
+                            </tr>
+                        }
+                        else
+                        {
+                            var glassesurl = "https://raw.githubusercontent.com/huberr3/IS7024/master/sunoff.gif";
+
+                            <tr>
+                                <td>@day/@month/@yearclean</td>
+                                <td>@eventss.Performance[0].Artist.DisplayName</td>
+                                <td>@eventss.Status</td>
+                                <td>@starttime</td>
+                                <td>@eventss.Sunset</td>
+                                <td><a href="@eventss.Uri" target="_blank">Get Tickets</a></td>
+                                <td><img src="@glassesurl" width="53" height="40" alt="NOPE!" title="NOPE!" /></td>
 
                             </tr>
                         }

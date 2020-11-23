@@ -1,3 +1,9 @@
 ﻿body {
     background-color:aliceblue;
 }
+
+div.a {
+    text-align: left;
+    font-size: 25px;
+    padding: 20px;
+}

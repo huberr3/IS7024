@@ -7,3 +7,10 @@ div.a {
     font-size: 25px;
     padding: 20px;
 }
+
+#footer {
+    bottom: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+}
